@@ -9,7 +9,7 @@ public class MaterialManager {
     ArrayList<Meat> meats = new ArrayList<>();
 
     public MaterialManager() {
-        CrispyFloor c1 = new CrispyFloor("01", "c1", LocalDate.of(2021, 1, 11), 10000, 1.2);
+        CrispyFloor c1 = new CrispyFloor("01", "c1", LocalDate.of(2021, 2, 11), 10000, 1.2);
         CrispyFloor c2 = new CrispyFloor("02", "c1", LocalDate.of(2021, 1, 10), 12000, 1.2);
         CrispyFloor c3 = new CrispyFloor("03", "c1", LocalDate.of(2021, 1, 13), 14000, 1.2);
         CrispyFloor c4 = new CrispyFloor("04", "c1", LocalDate.of(2021, 1, 13), 16000, 1.2);
@@ -27,14 +27,14 @@ public class MaterialManager {
         public double totalPriceCrispyFloor(){
         double a =0;
             for (CrispyFloor crispyFloor : crispyFloors) {
-                a += (crispyFloor.getAmount() - crispyFloor.getRemainAmount());
+                a += (crispyFloor.getAmount() - crispyFloor.getRealMoney());
             }
             return a;
         }
     public double totalPriceMeat(){
         double b =0;
         for (Meat meat : meats) {
-            b += (meat.getAmount() - meat.getRemainAmount());
+            b += (meat.getAmount() - meat.getRealMoney());
         }
         return b;
     }

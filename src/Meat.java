@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Meat extends Material {
+public class Meat extends Material implements Discount {
     private double weight;
 
     public Meat(String id, String name, LocalDate manufacturingDate, int cost, double weight) {
@@ -17,7 +17,19 @@ public class Meat extends Material {
     public LocalDate getExpiryDate() {
         return this.getManufacturingDate().plusDays(7);
     }
-    public double getRemainAmount() {
+//    public double getRemainAmount() {
+//        if (this.getExpiryDate().compareTo(LocalDate.now().plusDays(3)) <= 0){
+//            return this.getAmount() * 0.5;
+//        }
+//
+//        if (this.getExpiryDate().compareTo(LocalDate.now().plusDays(5)) <= 0){
+//            return this.getAmount() * 0.7;
+//        }
+//        return this.getAmount() * 0.9;
+//    }
+
+    @Override
+    public double getRealMoney() {
         if (this.getExpiryDate().compareTo(LocalDate.now().plusDays(3)) <= 0){
             return this.getAmount() * 0.5;
         }
@@ -27,5 +39,4 @@ public class Meat extends Material {
         }
         return this.getAmount() * 0.9;
     }
-
 }

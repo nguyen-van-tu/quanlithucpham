@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class CrispyFloor extends Material {
+public class CrispyFloor extends Material implements Discount {
     private double quantity;
 
     public CrispyFloor() {
@@ -30,13 +30,26 @@ public class CrispyFloor extends Material {
         return this.getManufacturingDate().plusYears(1);
     }
 
-    public double getRemainAmount() {
+//    public double getRemainAmount() {
+//        if (this.getExpiryDate().compareTo(LocalDate.now().plusMonths(2)) <= 0){
+//            return this.getAmount() * 0.6;
+//        }
+//
+//        if (this.getExpiryDate().compareTo(LocalDate.now().plusMonths(4)) <= 0){
+//           return this.getAmount() * 0.8;
+//        }
+//
+//        return this.getAmount() * 0.95;
+//    }
+
+    @Override
+    public double getRealMoney() {
         if (this.getExpiryDate().compareTo(LocalDate.now().plusMonths(2)) <= 0){
             return this.getAmount() * 0.6;
         }
 
         if (this.getExpiryDate().compareTo(LocalDate.now().plusMonths(4)) <= 0){
-           return this.getAmount() * 0.8;
+            return this.getAmount() * 0.8;
         }
 
         return this.getAmount() * 0.95;
